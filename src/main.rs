@@ -28,6 +28,7 @@ use std::time::Duration;
 const FONT_DIRECTORY: &'static str = "/Users/adamcowdy/Library/Fonts/";
 const BODY_FONT_FILE: &'static str = "Merriweather-Regular.ttf";
 
+const WINDOW_TITLE: &'static str = "The Green Duck";
 const WINDOW_WIDTH: u32 = 800;
 const WINDOW_HEIGHT: u32 = 600;
 
@@ -35,7 +36,7 @@ fn main() {
     let sdl_context = sdl2::init().unwrap();
     let video_subsystem = sdl_context.video().unwrap();
     let window = video_subsystem
-        .window("rust-sdl2 demo", WINDOW_WIDTH, WINDOW_HEIGHT)
+        .window(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT)
         .allow_highdpi()
         .position_centered()
         .build()
@@ -51,10 +52,8 @@ fn main() {
     canvas.clear();
     canvas.present();
     let mut event_pump = sdl_context.event_pump().unwrap();
-    let mut i = 0;
     'running: loop {
-        i = (i + 1) % 255;
-        canvas.set_draw_color(Color::RGB(i, 64, 255 - i));
+        canvas.set_draw_color(Color::WHITE);
         canvas.clear();
         for event in event_pump.poll_iter() {
             match event {
@@ -70,7 +69,7 @@ fn main() {
 
         let hello_world = font_body
             .render("Hello world!")
-            .blended(Color::WHITE)
+            .blended(Color::BLACK)
             .unwrap();
         let texture = texture_creator
             .create_texture_from_surface(&hello_world)
