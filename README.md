@@ -2,6 +2,13 @@
 
 This repository contains the game engine for The Green Duck, a dumb adventure game set in a procedurally generated world.
 
+## Dependencies
+
+- SDL2
+- SDL_image 2.0
+- SDL_ttf 2.0
+- SDL2_gfx
+
 ## Installation
 
 To install using [Cargo](https://doc.rust-lang.org/stable/cargo/):
